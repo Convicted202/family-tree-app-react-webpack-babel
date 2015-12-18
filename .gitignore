@@ -1,0 +1,5 @@
+node_modules
+src/stylesheets/css/**
+src/js/bundle.js
+src/stylesheets/sass/.sass-cache
+dist/**
