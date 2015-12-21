@@ -1,5 +1,6 @@
 {
     "env": {
+        "browser": true, // browser global variables.
         "es6": true
     },
 
@@ -26,7 +27,7 @@
         "templateStrings": true, // enable template strings
         "unicodeCodePointEscapes": true, // enable code point escapes
         "globalReturn": true, // allow return statements in the global scope
-        "jsx": false, // enable JSX
+        "jsx": true, // enable JSX
         "experimentalObjectRestSpread": true // enable support for the experimental object rest/spread properties (IMPORTANT: This is an experimental feature that may change significantly in the future. It's recommended that you do not write rules relying on this functionality unless you are willing to incur maintenance cost when it changes.)
     },
 

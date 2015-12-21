@@ -57,12 +57,16 @@ module.exports = function(grunt) {
         tasks: ['sass:dev']
       },
       scripts: {
-        files: ['<%= config.dev %>/js/*.js', 'Gruntfile.js'],
+        files: [
+          '<%= config.dev %>/js/*.js',
+          'Gruntfile.js',
+          'eslint.json'
+        ],
         tasks: ['eslint']
       },
       jsx: {
         files: ['<%= config.dev %>/js/*.jsx'],
-        tasks: ['webpack']
+        tasks: ['eslint', 'webpack']
       },
       html: {
         files: ['index.html']
@@ -96,7 +100,7 @@ module.exports = function(grunt) {
       options: {
         configFile: 'eslint.json'
       },
-      target: ['<%= config.dev %>/js/*.js']
+      target: ['<%= config.dev %>/js/*.js', '<%= config.dev %>/js/*.jsx']
     },
 
     uglify: {
@@ -155,6 +159,12 @@ module.exports = function(grunt) {
       }
     },
 
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js'
+      }
+    },
+
     // The actual grunt server settings
     connect: {
       dev: {
@@ -201,6 +211,12 @@ module.exports = function(grunt) {
   grunt.registerTask('build-run', function() {
     grunt.task.run(['build', 'build-server'])
   });
+
+  grunt.registerTask('test', [
+    'eslint',
+    // 'sass:dev',
+    'karma'
+  ]);
 
   grunt.registerTask('default', [
     'eslint',
